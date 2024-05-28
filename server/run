@@ -1,0 +1,1 @@
+qemu-system-x86_64 -accel kvm -smp 12 -m 4G -nographic -hda CentOS-7-x86_64-GenericCloud-2003.raw -hdb seed.img
