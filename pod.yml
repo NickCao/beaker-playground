@@ -1,5 +1,6 @@
 # default login
 # admin:admin
+# beaker-import https://mirrors.kernel.org/fedora/releases/40/
 apiVersion: v1
 kind: ConfigMap
 metadata:

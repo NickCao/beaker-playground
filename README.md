@@ -36,3 +36,25 @@ The provided ones interacts with ipmi, but can be replaced by
 user provided ones (e.g. jumpstarter)
 
 Special inventory task can be used to probe hardwares on DUT.
+
+
+### Manual Setup of DUT
+```shell
+dnf install -y 'dnf-command(config-manager)'
+dnf config-manager --add-repo https://beaker-project.org/yum/beaker-harness-Fedora.repo
+dnf install -y restraint
+```
+
+```shell
+export BEAKER_LAB_CONTROLLER_URL=http://jumphost.example.com:8000
+export BEAKER_LAB_CONTROLLER=jumphost.example.com:8000
+export BEAKER_RECIPE_ID=1
+export BEAKER_HUB_URL=http://example.com
+
+touch /etc/profile.d/beaker-harness-env.sh
+
+cat <<EOF >/var/lib/restraint/config.conf
+[restraint]
+recipe_url=$BEAKER_LAB_CONTROLLER_URL/recipes/$BEAKER_RECIPE_ID/
+EOF
+```
